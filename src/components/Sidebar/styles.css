@@ -1,0 +1,12 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 200px;
+  background-color: #0d0d0d;
+}
+
+.sidebar .profile-info {
+  margin-top: 30px;
+}
