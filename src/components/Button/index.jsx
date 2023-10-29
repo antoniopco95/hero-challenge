@@ -2,11 +2,17 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import PlanetIcon from "../../assets/planet-icon.svg";
+import useUser from "../../hooks/useUser";
 
 export default function PlanetButton() {
+  const { showCards, setShowCards } = useUser();
+  const startGame = () => {
+    setShowCards(!showCards);
+  };
   return (
     <Stack direction="row" spacing={2}>
       <Button
+        onClick={startGame}
         variant="contained"
         disableElevation
         startIcon={<img src={PlanetIcon} alt="Planet" width="20" height="20" />}

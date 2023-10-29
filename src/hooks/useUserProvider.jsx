@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 function useUserProvider() {
   const [heroes, setHeroes] = useState();
+  const [showCards, setShowCards] = useState(false);
 
   const getHeroes = async () => {
     try {
@@ -19,7 +20,7 @@ function useUserProvider() {
     }
   };
 
-  return { getHeroes, heroes };
+  return { getHeroes, heroes, showCards, setShowCards };
 }
 
 export default useUserProvider;

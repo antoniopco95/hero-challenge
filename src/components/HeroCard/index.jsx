@@ -12,6 +12,7 @@ export default function HeroCard({ hero }) {
       sx={{
         width: "150px",
         height: "200px",
+        borderRadius: "10px",
         border:
           hero.appearance.eyeColor === "Blue"
             ? "3px groove blue"
@@ -45,12 +46,11 @@ export default function HeroCard({ hero }) {
         <div>
           <CardMedia
             component="img"
-            height="125"
+            height="110"
             image={hero.images.lg}
             alt="hero-image"
             style={{
               padding: "0 20px 0 20px",
-              borderRadius: "0 0 5px 5px",
             }}
           />
         </div>
@@ -81,7 +81,12 @@ export default function HeroCard({ hero }) {
             <Typography
               sx={{ fontFamily: "Bangers, sans-serif", color: "#d9d9d9" }}
             >
-              {hero.powerstats.power}
+              {hero.powerstats.intelligence +
+                hero.powerstats.strength +
+                hero.powerstats.speed +
+                hero.powerstats.durability +
+                hero.powerstats.power +
+                hero.powerstats.combat}
             </Typography>
           </div>
         </CardContent>

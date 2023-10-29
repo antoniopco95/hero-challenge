@@ -5,7 +5,7 @@ import useUser from "../../hooks/useUser";
 import { useEffect } from "react";
 
 function Home() {
-  const { getHeroes, heroes } = useUser();
+  const { getHeroes, heroes, showCards } = useUser();
 
   useEffect(() => {
     getHeroes();
@@ -16,11 +16,12 @@ function Home() {
       <div className="container">
         <Sidebar />
         <div className="main-content">
-          <div className="cards-area">
-            {heroes && (
-              heroes.map((item) => <HeroCard key={item.id} hero={item} />)
-            )}
-          </div>
+          {showCards && (
+            <div className="cards-area">
+              {heroes &&
+                heroes.map((item) => <HeroCard key={item.id} hero={item} />)}
+            </div>
+          )}
         </div>
       </div>
     </>
