@@ -8,3 +8,10 @@
   width: calc(100vw - 200px);
   background-color: #1a1a1a;
 }
+
+.container .main-content .cards-area{
+  min-height: 100%;
+  width: 900px;
+  border: 3px solid red;
+  padding: 40px;
+}
