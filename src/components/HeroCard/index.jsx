@@ -1,28 +1,89 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
+import Sword from "../../assets/sword.svg";
 
-export default function HeroCard() {
+export default function HeroCard({ hero }) {
   return (
-    <Card sx={{ maxWidth: 140, maxHeight: 190 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
+    <Card
+      sx={{
+        width: "150px",
+        height: "200px",
+        border:
+          hero.appearance.eyeColor === "Blue"
+            ? "3px groove blue"
+            : hero.appearance.eyeColor === "Green"
+            ? "3px groove green"
+            : hero.appearance.eyeColor === "Yellow"
+            ? "3px groove yellow"
+            : hero.appearance.eyeColor === "Brown"
+            ? "3px groove brown"
+            : hero.appearance.eyeColor === "-"
+            ? "3px groove gray"
+            : undefined,
+      }}
+    >
+      <CardActionArea
+        sx={{
+          background:
+            hero.appearance.eyeColor === "Blue"
+              ? "radial-gradient(circle at 50% 50%, #2a5fff, #245af2, #164dd0, #053ca3, #002a75, #001a4c, #030d31, #020427)"
+              : hero.appearance.eyeColor === "Green"
+              ? "radial-gradient(circle at 50% 50%, #289a09, #24930c, #198210, #0c6a11, #035210, #013c0c, #022d07, #032704)"
+              : hero.appearance.eyeColor === "Yellow"
+              ? "radial-gradient(circle at 50% 50%, #e0fb1b, #c2d826, #a5b52b, #88942d, #6d742c, #525629, #383925, #1f1f1f)"
+              : hero.appearance.eyeColor === "Brown"
+              ? "radial-gradient(circle at 50% 50%, #ae583b, #944c33, #7a402c, #613424, #49281d, #331d16, #1e120d, #000000)"
+              : hero.appearance.eyeColor === "-"
+              ? "radial-gradient(circle at 50% 50%, #a9a29e, #8f8986, #76716e, #5d5a58, #464342, #302e2d, #1b1b1a, #000000)"
+              : undefined,
+        }}
+      >
+        <div>
+          <CardMedia
+            component="img"
+            height="125"
+            image={hero.images.lg}
+            alt="hero-image"
+            style={{
+              padding: "0 20px 0 20px",
+              borderRadius: "0 0 5px 5px",
+            }}
+          />
+        </div>
+        <CardContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            sx={{
+              fontFamily: "Bangers, sans-serif",
+              color: "#d9d9d9",
+              marginBottom: "10px",
+            }}
+          >
+            {hero.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "5px",
+            }}
+          >
+            <img src={Sword} alt="Sword" width="15" height="15" />
+            <Typography
+              sx={{ fontFamily: "Bangers, sans-serif", color: "#d9d9d9" }}
+            >
+              {hero.powerstats.power}
+            </Typography>
+          </div>
         </CardContent>
       </CardActionArea>
     </Card>
