@@ -1,15 +1,25 @@
 import "./styles.css";
 import Sidebar from "../../components/Sidebar";
 import HeroCard from "../../components/HeroCard";
+import useUser from "../../hooks/useUser";
+import { useEffect } from "react";
 
 function Home() {
+  const { getHeroes, heroes } = useUser();
+
+  useEffect(() => {
+    getHeroes();
+  }, []);
+
   return (
     <>
       <div className="container">
         <Sidebar />
         <div className="main-content">
           <div className="cards-area">
-            <HeroCard />
+            {heroes && (
+              heroes.map((item) => <HeroCard key={item.id} hero={item} />)
+            )}
           </div>
         </div>
       </div>
