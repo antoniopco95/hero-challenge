@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function useUserProvider() {
-  const [heroes, setHeroes] = useState();
+  const [heroes, setHeroes] = useState([]);
   const [showCards, setShowCards] = useState(false);
   const [open, setOpen] = useState(false);
   const [selectedHeroes, setSelectedHeroes] = useState([]);
@@ -10,6 +10,7 @@ function useUserProvider() {
     secondHero: "",
   });
   const [searchHero, setSearchHero] = useState("");
+  const [filtredArray, setFiltredArray] = useState();
 
   const getHeroes = async () => {
     try {
@@ -34,7 +35,7 @@ function useUserProvider() {
 
   const handleCardClick = (hero) => {
     setSelectedHeroes((prevSelectedHeroes) => [...prevSelectedHeroes, hero]);
-    if (selectedHeroes.length === 2) {
+    if (selectedHeroes.length === 1) {
       setOpen(true);
       setCombinedHeroStats({
         firstHero:
@@ -59,6 +60,7 @@ function useUserProvider() {
   return {
     getHeroes,
     heroes,
+    setHeroes,
     showCards,
     setShowCards,
     open,
@@ -70,6 +72,8 @@ function useUserProvider() {
     combinedHeroStats,
     searchHero,
     setSearchHero,
+    filtredArray,
+    setFiltredArray,
   };
 }
 

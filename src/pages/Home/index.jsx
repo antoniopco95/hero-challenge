@@ -5,9 +5,19 @@ import useUser from "../../hooks/useUser";
 import { useEffect } from "react";
 import BasicModal from "../../components/HeroModal";
 import InputSearch from "../../components/InputSearch";
+import NotFound from "../../assets/not-found.svg";
 
 function Home() {
-  const { getHeroes, heroes, showCards, selectedHeroes } = useUser();
+  const {
+    getHeroes,
+    heroes,
+    showCards,
+    selectedHeroes,
+    searchHero,
+    setSearchHero,
+    filtredArray,
+    setFiltredArray,
+  } = useUser();
 
   useEffect(() => {
     getHeroes();
@@ -18,12 +28,21 @@ function Home() {
       <div className="container">
         <Sidebar />
         <div className="main-content">
-          {showCards && (
-            <div className="cards-area">
-              {heroes &&
-                heroes.map((item) => <HeroCard key={item.id} hero={item} />)}
-            </div>
-          )}
+          <div className="cards-area">
+            {filtredArray  ? (
+              <HeroCard key={filtredArray.id} hero={filtredArray} />
+            ) : showCards && heroes.length > 0 ? (
+              heroes.map((item) => <HeroCard key={item.id} hero={item} />)
+            ) : null}
+
+            {/*  {heroes &&
+              heroes.map((item) => {
+                return showCards ? (
+                  <HeroCard key={item.id} hero={item} />
+                ) : null;
+              })} */}
+          </div>
+
           {selectedHeroes && selectedHeroes.length >= 2 ? <BasicModal /> : null}
           <InputSearch />
         </div>

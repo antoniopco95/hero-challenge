@@ -6,15 +6,25 @@ import SearchIcon from "../../assets/search-icon.svg";
 import useUser from "../../hooks/useUser";
 
 export default function InputSearch() {
-  const { searchHero, setSearchHero, heroes } = useUser();
+  const { searchHero, setSearchHero, heroes, setFiltredArray } = useUser();
+
   const handleInputChange = (e) => {
     setSearchHero(e.target.value);
   };
 
   const filtredHeroes = heroes
-    ? heroes.filter((item) => item.name === searchHero)
+    ? heroes.find(
+        (item) => item.name.toLowerCase() === searchHero.toLowerCase()
+      )
     : [];
-  console.log(filtredHeroes);
+
+  if (filtredHeroes) {
+    setFiltredArray(filtredHeroes);
+  }
+
+  if (!searchHero) {
+    setFiltredArray(null);
+  }
 
   return (
     <Box sx={{ "& > :not(style)": { m: 1 } }}>
