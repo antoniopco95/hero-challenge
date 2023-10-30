@@ -16,7 +16,7 @@ function useUserProvider() {
         "http://homologacao3.azapfy.com.br/api/ps/metahumans"
       );
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Resposta da requisição não foi ok!");
       }
       const data = await response.json();
       const firstHeroes = data.slice(0, 15);
