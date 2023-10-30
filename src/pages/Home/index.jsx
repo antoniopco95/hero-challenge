@@ -25,7 +25,6 @@ function Home() {
             </div>
           )}
           {selectedHeroes && selectedHeroes.length >= 2 ? <BasicModal /> : null}
-
           <InputSearch />
         </div>
       </div>

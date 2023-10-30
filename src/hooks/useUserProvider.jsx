@@ -9,6 +9,7 @@ function useUserProvider() {
     firstHero: "",
     secondHero: "",
   });
+  const [searchHero, setSearchHero] = useState("");
 
   const getHeroes = async () => {
     try {
@@ -67,6 +68,8 @@ function useUserProvider() {
     setSelectedHeroes,
     handleCardClick,
     combinedHeroStats,
+    searchHero,
+    setSearchHero,
   };
 }
 
