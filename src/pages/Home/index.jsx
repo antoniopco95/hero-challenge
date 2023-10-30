@@ -4,6 +4,7 @@ import HeroCard from "../../components/HeroCard";
 import useUser from "../../hooks/useUser";
 import { useEffect } from "react";
 import BasicModal from "../../components/HeroModal";
+import InputSearch from "../../components/InputSearch";
 
 function Home() {
   const { getHeroes, heroes, showCards, selectedHeroes } = useUser();
@@ -24,6 +25,8 @@ function Home() {
             </div>
           )}
           {selectedHeroes && selectedHeroes.length >= 2 ? <BasicModal /> : null}
+
+          <InputSearch />
         </div>
       </div>
     </>
