@@ -3,9 +3,10 @@ import Sidebar from "../../components/Sidebar";
 import HeroCard from "../../components/HeroCard";
 import useUser from "../../hooks/useUser";
 import { useEffect } from "react";
+import BasicModal from "../../components/HeroModal";
 
 function Home() {
-  const { getHeroes, heroes, showCards } = useUser();
+  const { getHeroes, heroes, showCards, selectedHeroes } = useUser();
 
   useEffect(() => {
     getHeroes();
@@ -22,6 +23,7 @@ function Home() {
                 heroes.map((item) => <HeroCard key={item.id} hero={item} />)}
             </div>
           )}
+          {selectedHeroes && selectedHeroes.length >= 2 ? <BasicModal /> : null}
         </div>
       </div>
     </>

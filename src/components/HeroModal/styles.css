@@ -1,0 +1,47 @@
+.modal-title {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  color: #d9d9d9;
+}
+
+.modal-title p {
+  color: #09e81c;
+}
+
+.modal-content {
+  display: flex;
+  margin-top: 40px;
+}
+
+.modal-content .first-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #d9d9d9;
+}
+
+.modal-content .first-hero img {
+  height: 200px;
+}
+
+.modal-content .second-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #d9d9d9;
+}
+
+.modal-content .second-hero img {
+  height: 200px;
+}
+
+.heroes-stats {
+  display: flex;
+  padding: 40px;
+  gap: 90px;
+}
+
+.heroes-stats p {
+  color: #d9d9d9;
+}

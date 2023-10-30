@@ -5,8 +5,10 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import Sword from "../../assets/sword.svg";
+import useUser from "../../hooks/useUser";
 
 export default function HeroCard({ hero }) {
+  const { handleCardClick } = useUser();
   return (
     <Card
       sx={{
@@ -28,6 +30,7 @@ export default function HeroCard({ hero }) {
       }}
     >
       <CardActionArea
+        onClick={() => handleCardClick(hero)}
         sx={{
           background:
             hero.appearance.eyeColor === "Blue"
