@@ -1,9 +1,7 @@
 import "./styles.css";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import useUser from "../../hooks/useUser";
-import { CardMedia } from "@mui/material";
 import ArrowUp from "../../assets/arrow-up.svg";
 import ArrowDown from "../../assets/arrow-down.svg";
 
@@ -21,7 +19,18 @@ const style = {
 };
 
 export default function BasicModal() {
-  const { open, handleClose, selectedHeroes, combinedHeroStats } = useUser();
+  const {
+    open,
+    selectedHeroes,
+    combinedHeroStats,
+    setOpen,
+    setSelectedHeroes,
+  } = useUser();
+
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedHeroes([]);
+  };
 
   return (
     <>

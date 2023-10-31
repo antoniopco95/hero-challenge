@@ -5,19 +5,26 @@ import useUser from "../../hooks/useUser";
 import { useEffect } from "react";
 import BasicModal from "../../components/HeroModal";
 import InputSearch from "../../components/InputSearch";
-import NotFound from "../../assets/not-found.svg";
 
 function Home() {
-  const {
-    getHeroes,
-    heroes,
-    showCards,
-    selectedHeroes,
-    searchHero,
-    setSearchHero,
-    filtredArray,
-    setFiltredArray,
-  } = useUser();
+  const { heroes, setHeroes, showCards, selectedHeroes, filtredArray } =
+    useUser();
+
+  const getHeroes = async () => {
+    try {
+      const response = await fetch(
+        "http://homologacao3.azapfy.com.br/api/ps/metahumans"
+      );
+      if (!response.ok) {
+        throw new Error("Resposta da requisição não foi ok!");
+      }
+      const data = await response.json();
+      const firstHeroes = data.slice(0, 15);
+      setHeroes(firstHeroes);
+    } catch (error) {
+      console.error("Erro ao consultar dados:", error);
+    }
+  };
 
   useEffect(() => {
     getHeroes();
@@ -29,7 +36,7 @@ function Home() {
         <Sidebar />
         <div className="main-content">
           <div className="cards-area">
-            {filtredArray  ? (
+            {filtredArray ? (
               <HeroCard key={filtredArray.id} hero={filtredArray} />
             ) : showCards && heroes.length > 0 ? (
               heroes.map((item) => <HeroCard key={item.id} hero={item} />)

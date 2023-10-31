@@ -8,7 +8,39 @@ import Sword from "../../assets/sword.svg";
 import useUser from "../../hooks/useUser";
 
 export default function HeroCard({ hero }) {
-  const { handleCardClick } = useUser();
+  const {
+    setSelectedHeroes,
+    setOpen,
+    setCombinedHeroStats,
+    selectedHeroes,
+    combinedHeroStats,
+  } = useUser();
+
+  const handleCardClick = (hero) => {
+    setSelectedHeroes((prevSelectedHeroes) => [...prevSelectedHeroes, hero]);
+
+    if (selectedHeroes.length === 1) {
+      setOpen(true);
+      setCombinedHeroStats({
+        firstHero:
+          selectedHeroes[0].powerstats.intelligence +
+          selectedHeroes[0].powerstats.strength +
+          selectedHeroes[0].powerstats.speed +
+          selectedHeroes[0].powerstats.durability +
+          selectedHeroes[0].powerstats.power +
+          selectedHeroes[0].powerstats.combat,
+        secondHero:
+          selectedHeroes[1].powerstats.intelligence +
+          selectedHeroes[1].powerstats.strength +
+          selectedHeroes[1].powerstats.speed +
+          selectedHeroes[1].powerstats.durability +
+          selectedHeroes[1].powerstats.power +
+          selectedHeroes[1].powerstats.combat,
+      });
+    }
+    console.log(combinedHeroStats);
+  };
+
   return (
     <Card
       sx={{
