@@ -1,8 +1,26 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Hero Challenge
 
-Currently, two official plugins are available:
+Projeto de um jogo de heróis que recria batalhas entre eles, ativadas ao clicar em qualquer par de heróis da lista.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidades
+
+- Load das cartas ao clicar no botão Cartas.
+- Modal com informações dos heróis clicados (par heróis).
+- Busca de heróis.
+
+
+
+## Instalação
+
+Na raiz do projeto rode os comandos:
+
+```bash
+  npm install (instalar dependências do projeto)
+  npm run dev(rodar o projeto localmente)
+```
+    
+## Autor
+
+- [@antoniopco95](https://www.github.com/antoniopco95)
+
