@@ -26,6 +26,7 @@ function useUserProvider() {
     setSearchHero,
     filtredArray,
     setFiltredArray,
+    setCombinedHeroStats,
   };
 }
 

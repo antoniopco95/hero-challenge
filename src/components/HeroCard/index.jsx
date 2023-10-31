@@ -6,20 +6,17 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import Sword from "../../assets/sword.svg";
 import useUser from "../../hooks/useUser";
+import { useEffect, useState } from "react";
 
 export default function HeroCard({ hero }) {
-  const {
-    setSelectedHeroes,
-    setOpen,
-    setCombinedHeroStats,
-    selectedHeroes,
-    combinedHeroStats,
-  } = useUser();
-
+  const { setSelectedHeroes, setOpen, setCombinedHeroStats, selectedHeroes } =
+    useUser();
   const handleCardClick = (hero) => {
     setSelectedHeroes((prevSelectedHeroes) => [...prevSelectedHeroes, hero]);
+  };
 
-    if (selectedHeroes.length === 1) {
+  useEffect(() => {
+    if (selectedHeroes.length === 2) {
       setOpen(true);
       setCombinedHeroStats({
         firstHero:
@@ -38,11 +35,11 @@ export default function HeroCard({ hero }) {
           selectedHeroes[1].powerstats.combat,
       });
     }
-    console.log(combinedHeroStats);
-  };
+  }, [selectedHeroes]);
 
   return (
     <Card
+      onClick={() => handleCardClick(hero)}
       sx={{
         width: "150px",
         height: "200px",
@@ -62,7 +59,6 @@ export default function HeroCard({ hero }) {
       }}
     >
       <CardActionArea
-        onClick={() => handleCardClick(hero)}
         sx={{
           background:
             hero.appearance.eyeColor === "Blue"
