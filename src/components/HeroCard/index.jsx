@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import Sword from "../../assets/sword.svg";
 import useUser from "../../hooks/useUser";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function HeroCard({ hero }) {
   const { setSelectedHeroes, setOpen, setCombinedHeroStats, selectedHeroes } =

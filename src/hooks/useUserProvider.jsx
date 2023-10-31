@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function useUserProvider() {
   const [heroes, setHeroes] = useState([]);
   const [showCards, setShowCards] = useState(false);

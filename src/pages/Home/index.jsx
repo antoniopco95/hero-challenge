@@ -41,13 +41,6 @@ function Home() {
             ) : showCards && heroes.length > 0 ? (
               heroes.map((item) => <HeroCard key={item.id} hero={item} />)
             ) : null}
-
-            {/*  {heroes &&
-              heroes.map((item) => {
-                return showCards ? (
-                  <HeroCard key={item.id} hero={item} />
-                ) : null;
-              })} */}
           </div>
 
           {selectedHeroes && selectedHeroes.length >= 2 ? <BasicModal /> : null}
